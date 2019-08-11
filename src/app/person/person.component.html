@@ -1,0 +1,36 @@
+<a class="btn btn-outline-success" routerLink="/contactlist">
+    <i class="fa fa-plus-square"></i> Agregar Persona
+</a>
+<br>
+
+<table class="table table-borderless">
+    <thead class="thead-light">
+        <div style="display:none;">
+            <th>idcontact</th>
+        </div>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Whatsapp</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of personas;">
+            <div style="display:none;">
+                <td>{{item.idcontact}}</td>
+            </div>
+            <td>{{item.nombre}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.whatsapp}}</td>
+            <td (click)="onSelectPerson(item)">{{item.click}}</td>
+            <td>
+                <a class="btn btn-sm btn-info text-white" (click)="editarlista(item.idcontact)">
+                    <i class="fa fa-pencil"></i></a>
+                <a class="btn btn-sm btn-danger text-white ml-1" (click)="eliminarlista(item.idcontact)">
+                    <i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<app-detalle [idperson]="detalle">
+
+</app-detalle>

@@ -1,0 +1,16 @@
+<table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%"
+  style="width:100%">
+  <thead>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of idperson;">
+      <div style="display:none;">
+        <td>{{ row.idcontact }}</td>
+      </div>
+      <td>{{ row.nombre }}</td>
+      <td>{{ row.email }}</td>
+      <td>{{ row.whatsapp }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+  <input type="hidden" name="idcontact" #idcontact="ngModel" [(ngModel)]="_contactService.selectedContact.idcontact">
+  <div class="form-row">
+
+    <input class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="_contactService.selectedContact.nombre"
+      placeholder="nombre" required>
+    <div class="validation-error" *ngIf="nombre.invalid && nombre.touched">Ingrese nombre.</div>
+
+  </div>
+  <div class="form-row">
+    <input class="form-control" name="email" #email="ngModel" [(ngModel)]="_contactService.selectedContact.email"
+      placeholder="email" required>
+    <div class="validation-error" *ngIf="email.invalid && email.touched">Ingrese email.</div>
+
+  </div>
+  <div class="form-group">
+    <input class="form-control" name="whatsapp" #whatsapp="ngModel"
+      [(ngModel)]="_contactService.selectedContact.whatsapp" placeholder="whatsapp">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <button [disabled]="!contactForm.valid" type="submit" class="btn btn-lg btn-block btn-info">
+        <i class="fa fa-floppy-o"></i>Grabar</button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(contactForm)">
+        <i class="fa fa-repeat"></i>Limpiar Campos</button>
+    </div>
+  </div>
+</form>

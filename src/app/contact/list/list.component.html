@@ -1,0 +1,18 @@
+<table class="table table-sm table-hover">
+  <tr *ngFor="let row of _contactService.contactList;">
+    <div style="display:none;">
+      <td>{{row.idcontact}}</td>
+    </div>
+    <td>{{row.nombre}}</td>
+    <td>{{row.email}}</td>
+    <td>{{row.whatsapp}}</td>
+    <td>
+      <a class="btn" (click)="showForEdit(row)">
+        <i class="fa fa-pencil-square-o"></i>
+      </a>
+      <a class="btn text-danger" (click)="onDelete(row.idcontact)">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </td>
+  </tr>
+</table>

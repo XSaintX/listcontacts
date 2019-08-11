@@ -1,0 +1,23 @@
+<h4 class="dispaly-4">Lista de Contactos</h4>
+<hr>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="formData.id">
+    <label>Contacto</label>
+    <select name="idcontact" #idcontact="ngModel" [(ngModel)]="formData.idcontact" class="form-control"
+      [class.is-invalid]="!isValid && formData.idcontact==0">
+      <option value="0">--Seleccionar--</option>
+      <option *ngFor="let item of itemList" value="{{item.idcontact}}">{{item.nombre}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="show" class="alert alert-danger">
+    <div>Este contacto ya fue escogido</div>
+
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Agregar</button>
+    <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i>
+      Cerrar</button>
+  </div>
+</form>

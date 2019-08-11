@@ -1,0 +1,55 @@
+<form #form="ngForm" autocomplete="off" *ngIf="personservice.formData" (submit)="onSubmit(form)">
+
+  <div class="form-group">
+    <label>Person</label>
+    <select name="idperson" #idperson="ngModel" [(ngModel)]="personservice.formData.idperson" class="form-control"
+      (change)="onChange($event)" [class.is-invalid]="!isValid && personservice.formData.idperson==0">
+
+      <option *ngFor="let item of personList" value="{{item.idperson}}">{{item.Name}}</option>
+    </select>
+  </div>
+
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <div style="display:none;">
+        <th>idcontact</th>
+      </div>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Whatsapp</th>
+
+      <th>
+        <a class="btn btn-sm btn-success text-white" (click)="AddOrEditContactItem(null, personservice.formData.id)"
+          *ngIf="show">
+          <i class="fa fa-plus"></i> Agregar Contacto
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngIf="personservice.fullitem.length==0" [class.text-danger]="!isValid && personservice.fullitem.length==0">
+        <td class="font-italic text-center" colspan="5">
+          Ningun contacto agregado.
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of personservice.fullitem;let i=index;">
+        <div style="display:none;">
+          <td>{{item.idcontact}}</td>
+        </div>
+        <td>{{item.nombre}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.whatsapp}}</td>
+        <td>
+          <a class="btn btn-sm btn-info text-white" (click)="AddOrEditContactItem(i, item.idcontact)">
+            <i class="fa fa-pencil"></i></a>
+          <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteContactItem(item.idcontact,i)">
+            <i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark" *ngIf="showgrabar"><i class="fa fa-database"></i> Grabar</button>
+
+  </div>
+</form>
